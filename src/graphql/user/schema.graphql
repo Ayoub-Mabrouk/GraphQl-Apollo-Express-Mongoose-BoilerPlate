@@ -6,9 +6,6 @@ type User {
   email: String!
   company: Company!
 }
-type Query {
-  users: [User]!
-}
 input signInInput {
   email: String!
   password: String!
@@ -18,11 +15,14 @@ input signUpInput {
   lastName: String!
   password: String!
   email: String!
-  companyID: company!
+  company: company!
 }
 type AuthPayload {
   token: String
   user: User
+}
+type Query {
+  users: [User]!
 }
 type Mutation {
   signIn(input: signInInput): AuthPayload
