@@ -2,7 +2,7 @@ type User {
   id: ID!
   firstName: String!
   lastName: String!
-  password: String!
+  password: String 
   email: String!
   company: Company!
 }

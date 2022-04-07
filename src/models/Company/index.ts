@@ -1,13 +1,13 @@
 import { Schema, model } from "mongoose"
-interface ICompany {
-    name: string
-}
+// interface ICompany {
+//     name: string
+// }
 
-const companySchema = new Schema<ICompany>(
+const companySchema = new Schema(
     {
         name: { type: String }
     },
     { timestamps: true }
 )
 
-export const companyModel= model<ICompany>("Company", companySchema);
+export const companyModel= model("Company", companySchema);
