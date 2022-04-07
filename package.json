@@ -9,6 +9,8 @@
     "dev": "ts-node-dev --respawn ./src/index.ts"
   },
   "dependencies": {
+    "@graphql-tools/load-files": "^6.5.3",
+    "@graphql-tools/merge": "^8.2.6",
     "apollo-server-express": "^3.6.7",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",

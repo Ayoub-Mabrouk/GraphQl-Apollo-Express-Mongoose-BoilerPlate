@@ -1,0 +1,30 @@
+type User {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  password: String!
+  email: String!
+  company: Company!
+}
+type Query {
+  users: [User]!
+}
+input signInInput {
+  email: String!
+  password: String!
+}
+input signUpInput {
+  firstName: String!
+  lastName: String!
+  password: String!
+  email: String!
+  companyID: company!
+}
+type AuthPayload {
+  token: String
+  user: User
+}
+type Mutation {
+  signIn(input: signInInput): AuthPayload
+  signUp(input: signUpInput): AuthPayload
+}
