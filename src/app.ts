@@ -1,6 +1,6 @@
 //Environment Variables
 import {ENV_VARS}  from './env'
-
+import { dbConnection } from './database/connection';
 import { ApolloServer, gql }  from "apollo-server-express"
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import fs  from "fs"
@@ -30,6 +30,7 @@ async function startServer() {
     schema: makeExecutableSchema({ typeDefs, resolvers })
   });
   await apolloServer.start();
+  await dbConnection();
   apolloServer.applyMiddleware({ app, path: "/graphql" });
 }
 startServer();
