@@ -1,7 +1,15 @@
-import { Schema, model } from "mongoose"
+import { Schema, model,Types } from "mongoose"
 import validator from "validator";
 
-const userSchema = new Schema(
+interface IUser {
+    firstName: string
+    lastName: string
+    password: string
+    email: string
+    company: Types.ObjectId
+}
+
+const userSchema = new Schema<IUser>(
     {
         firstName: { type: String },
         lastName: { type: String },
@@ -12,7 +20,7 @@ const userSchema = new Schema(
             unique: true,
             lowercase: true,
             validate: [validator.isEmail, " Please provide a valid email"],
-          },
+        },
         company: {
             type: Schema.Types.ObjectId,
             ref: "Company",
@@ -21,4 +29,4 @@ const userSchema = new Schema(
     { timestamps: true }
 )
 
-export const userModel = model("User", userSchema);
+export const userModel= model<IUser>("User", userSchema);

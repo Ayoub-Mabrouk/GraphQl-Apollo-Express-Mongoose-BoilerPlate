@@ -5,10 +5,11 @@ import { mergeTypeDefs } from '@graphql-tools/merge';
 
 // Load all resolvers
 const resolversPath = join(__dirname, './**/resolver.*');
+
 const resolversArray = loadFilesSync(resolversPath);
 export const resolvers = mergeResolvers(resolversArray);
 
 //Load all typeDefs
-const typeDefsPath = join(__dirname, './**/schema.graphql');
+const typeDefsPath = join(__dirname, './**/schema.*');
 const typeDefsArray = loadFilesSync(typeDefsPath);
 export const typeDefs =  mergeTypeDefs(typeDefsArray);

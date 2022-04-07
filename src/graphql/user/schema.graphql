@@ -15,7 +15,7 @@ input signUpInput {
   lastName: String!
   password: String!
   email: String!
-  company: company!
+  company: ID!
 }
 type AuthPayload {
   token: String
