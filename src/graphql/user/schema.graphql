@@ -26,5 +26,5 @@ type Query {
 }
 type Mutation {
   signIn(input: signInInput): AuthPayload
-  signUp(input: signUpInput): AuthPayload
+  signUp(input: signUpInput):User
 }

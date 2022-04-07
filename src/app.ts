@@ -11,7 +11,6 @@ import jwt  from "jsonwebtoken"
 
 import { typeDefs,resolvers }  from "./graphql"
 
-
 import express, {Request,Response,Application} from 'express';
 const app:Application = express();
 app.use(

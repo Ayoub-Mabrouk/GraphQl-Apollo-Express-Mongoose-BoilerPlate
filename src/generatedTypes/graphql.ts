@@ -25,10 +25,26 @@ export type Company = {
   name: Scalars['String'];
 };
 
+export type CompanyInput = {
+  name: Scalars['String'];
+};
+
+export type CompanyUpdateInput = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
+  createCompany: Company;
   signIn?: Maybe<AuthPayload>;
-  signUp?: Maybe<AuthPayload>;
+  signUp?: Maybe<User>;
+  updateCompany?: Maybe<Company>;
+};
+
+
+export type MutationCreateCompanyArgs = {
+  input?: InputMaybe<CompanyInput>;
 };
 
 
@@ -39,6 +55,11 @@ export type MutationSignInArgs = {
 
 export type MutationSignUpArgs = {
   input?: InputMaybe<SignUpInput>;
+};
+
+
+export type MutationUpdateCompanyArgs = {
+  input?: InputMaybe<CompanyUpdateInput>;
 };
 
 export type Query = {
@@ -142,6 +163,8 @@ export type ResolversTypes = {
   AuthPayload: ResolverTypeWrapper<AuthPayload>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Company: ResolverTypeWrapper<Company>;
+  CompanyInput: CompanyInput;
+  CompanyUpdateInput: CompanyUpdateInput;
   ID: ResolverTypeWrapper<Scalars['ID']>;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
@@ -156,6 +179,8 @@ export type ResolversParentTypes = {
   AuthPayload: AuthPayload;
   Boolean: Scalars['Boolean'];
   Company: Company;
+  CompanyInput: CompanyInput;
+  CompanyUpdateInput: CompanyUpdateInput;
   ID: Scalars['ID'];
   Mutation: {};
   Query: {};
@@ -178,8 +203,10 @@ export type CompanyResolvers<ContextType = any, ParentType extends ResolversPare
 };
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
+  createCompany?: Resolver<ResolversTypes['Company'], ParentType, ContextType, Partial<MutationCreateCompanyArgs>>;
   signIn?: Resolver<Maybe<ResolversTypes['AuthPayload']>, ParentType, ContextType, Partial<MutationSignInArgs>>;
-  signUp?: Resolver<Maybe<ResolversTypes['AuthPayload']>, ParentType, ContextType, Partial<MutationSignUpArgs>>;
+  signUp?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, Partial<MutationSignUpArgs>>;
+  updateCompany?: Resolver<Maybe<ResolversTypes['Company']>, ParentType, ContextType, Partial<MutationUpdateCompanyArgs>>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
