@@ -10,8 +10,7 @@ import expressJwt  from "express-jwt";
 import jwt  from "jsonwebtoken"
 
 import { typeDefs,resolvers }  from "./graphql"
-// import { typeDefs } from './graphql/index';
-// import { resolvers } from './graphql/index';
+
 
 import express, {Request,Response,Application} from 'express';
 const app:Application = express();
