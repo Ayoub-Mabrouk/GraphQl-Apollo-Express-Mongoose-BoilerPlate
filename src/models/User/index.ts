@@ -4,7 +4,7 @@ import validator from "validator";
 interface IUser {
     firstName: string
     lastName: string
-    password: string
+    password: string | undefined
     email: string
     company: Types.ObjectId
 }
