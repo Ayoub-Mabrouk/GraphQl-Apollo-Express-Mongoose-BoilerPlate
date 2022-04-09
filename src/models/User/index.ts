@@ -6,6 +6,7 @@ interface IUser {
     lastName: string
     password: string | undefined
     email: string
+    roles: Types.ObjectId[]
     company: Types.ObjectId
 }
 
@@ -21,6 +22,7 @@ const userSchema = new Schema<IUser>(
             lowercase: true,
             validate: [validator.isEmail, " Please provide a valid email"],
         },
+        roles: [{ type: Schema.Types.ObjectId, ref: "Role" }],
         company: {
             type: Schema.Types.ObjectId,
             ref: "Company",

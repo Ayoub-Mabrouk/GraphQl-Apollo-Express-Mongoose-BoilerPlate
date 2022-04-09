@@ -1,5 +1,6 @@
 //Environment Variables
 import {ENV_VARS}  from './env'
+import { schema } from './graphql-schema';
 import { dbConnection } from './database/connection';
 import { ApolloServer, gql }  from "apollo-server-express"
 import { makeExecutableSchema } from '@graphql-tools/schema';
@@ -8,8 +9,6 @@ import bodyParser  from "body-parser"
 import cors  from "cors"
 import expressJwt  from "express-jwt";
 import jwt  from "jsonwebtoken"
-
-import { typeDefs,resolvers }  from "./graphql"
 
 import express, {Request,Response,Application} from 'express';
 const app:Application = express();
@@ -25,8 +24,9 @@ app.use(
 
 async function startServer() {
   const apolloServer = new ApolloServer({
-    schema: makeExecutableSchema({ typeDefs, resolvers })
+    schema
   });
+  
   await apolloServer.start();
   await dbConnection();
   apolloServer.applyMiddleware({ app, path: "/graphql" });

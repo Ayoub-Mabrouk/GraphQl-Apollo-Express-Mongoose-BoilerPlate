@@ -4,6 +4,7 @@ type User {
   lastName: String!
   password: String 
   email: String!
+  roles:[Role]!
   company: Company!
 }
 input signInInput {
