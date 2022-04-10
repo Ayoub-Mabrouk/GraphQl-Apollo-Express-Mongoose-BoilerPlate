@@ -38,5 +38,5 @@ app.get("/", (req:Request, res:Response):void => {
   });
 
   app.listen(ENV_VARS.PORT, ():void => {
-    console.log(`Server Running here 👉 https://localhost:${ENV_VARS.PORT}`);    
+    console.log(`Server Running here 👉 http://localhost:${ENV_VARS.PORT}`);    
   });

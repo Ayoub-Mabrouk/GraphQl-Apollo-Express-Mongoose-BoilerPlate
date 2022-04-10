@@ -1,6 +1,7 @@
-import { AuthPayload, ResolversTypes, SignUpInput, User } from "../../generatedTypes/graphql";
+import { AuthPayload, ResolversTypes, SignUpInput, User } from "../../generated/graphql";
 import { companyModel, userModel,roleModel } from "@models/index";
 import {Types} from 'mongoose'
+import { SignInInput } from "generated/graphql";
 export const resolvers = {
     Query: {
         users: async () => {
@@ -14,6 +15,19 @@ export const resolvers = {
         signUp: async (_: any, { input }: { input: SignUpInput }) => {
             const user = new userModel(input);
             return await user.save();
+        },
+        signIn: async (_: any, { input }: { input: SignInInput }) => {
+            const user = await userModel.findOne({ email: input.email });
+            if (!user) {
+                throw new Error("User not found");
+            }
+            if (user.password !== input.password) {
+                throw new Error("Password is incorrect");
+            }
+            return {
+                token: "token",
+                user
+            };
         }
     }
 }

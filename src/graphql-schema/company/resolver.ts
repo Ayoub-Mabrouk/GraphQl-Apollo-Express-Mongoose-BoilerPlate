@@ -1,5 +1,5 @@
 import { companyModel } from "../../models";
-import { Company, CompanyInput, CompanyUpdateInput } from "../../generatedTypes/graphql";
+import { Company, CompanyInput, CompanyUpdateInput } from "../../generated/graphql";
 export const resolvers = {
     Query: {
         companies: async () => {
@@ -7,8 +7,7 @@ export const resolvers = {
         }
     },
     Mutation: {
-        createCompany: async (_: any, { input }: {input:CompanyInput}) => {    
-                    
+        createCompany: async (_: any, { input }: {input:CompanyInput}) => {              
             const company = new companyModel(input);
             return await company.save();
         },

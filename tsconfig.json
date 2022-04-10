@@ -11,7 +11,8 @@
     "incremental": true,
     "baseUrl": "src",
     "paths": {
-      "@models/*": ["models/*"]
+      "@models/*": ["models/*"],
+      "@lib/*": ["lib/*"]
     }
   },
   "include": ["src/**/*.ts"]

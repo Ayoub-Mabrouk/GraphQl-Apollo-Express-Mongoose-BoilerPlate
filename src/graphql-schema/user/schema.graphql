@@ -19,7 +19,8 @@ input signUpInput {
   company: ID!
 }
 type AuthPayload {
-  token: String
+  accessToken: String
+  refreshToken: String
   user: User
 }
 type Query {
