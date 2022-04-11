@@ -80,6 +80,7 @@ export type User = {
   company: Company;
   email: Scalars['String'];
   firstName: Scalars['String'];
+  generatedID?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   lastName: Scalars['String'];
   password?: Maybe<Scalars['String']>;
@@ -235,6 +236,7 @@ export type UserResolvers<ContextType = any, ParentType extends ResolversParentT
   company?: Resolver<ResolversTypes['Company'], ParentType, ContextType>;
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   firstName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  generatedID?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   lastName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   password?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;

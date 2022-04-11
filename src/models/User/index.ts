@@ -5,6 +5,7 @@ interface IUser {
     firstName: string
     lastName: string
     password: string | undefined
+    generatedID: string 
     email: string
     roles: Types.ObjectId[]
     company: Types.ObjectId
@@ -15,6 +16,7 @@ const userSchema = new Schema<IUser>(
         firstName: { type: String },
         lastName: { type: String },
         password: { type: String },
+        generatedID: { type: String },
         email: {
             type: String,
             required: [true, "Please fill your email"],

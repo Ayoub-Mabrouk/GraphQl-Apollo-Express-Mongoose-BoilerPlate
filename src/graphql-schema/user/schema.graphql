@@ -3,10 +3,12 @@ type User {
   firstName: String!
   lastName: String!
   password: String 
+  generatedID: String
   email: String!
   roles:[Role]!
   company: Company!
 }
+
 input signInInput {
   email: String!
   password: String!
@@ -18,10 +20,18 @@ input signUpInput {
   email: String!
   company: ID!
 }
+type ReturnedUser {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  roles:[Role]!
+  company: Company!
+}
 type AuthPayload {
   accessToken: String
   refreshToken: String
-  user: User
+  user: ReturnedUser
 }
 type Query {
   users: [User]!

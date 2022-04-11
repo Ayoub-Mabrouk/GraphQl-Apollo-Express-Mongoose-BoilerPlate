@@ -5,7 +5,7 @@ export const ENV_VARS = {
     db_password: process.env.DB_PASSWORD,
     db_cluster: process.env.DB_CLUSTER,
     PORT: process.env.PORT || 8000,
-    jwtSecret : Buffer.from("Zn8Q5tyZ/G1MHltc4F/gTkVJMlrbKiZt", "base64"),
+    jwtSecret :"mysecret",
     access_jwt_expiresIN:process.env.ACCESS_JWT_EXPIRES_IN || "1h",
     refresh_jwt_expiresIN:process.env.REFRESH_JWT_EXPIRES_IN || "1d",
     access_jwt_algorithm:process.env.ACCESS_JWT_ALGORITHM || "HS256",
