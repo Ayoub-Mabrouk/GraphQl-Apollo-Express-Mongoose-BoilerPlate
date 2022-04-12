@@ -1,4 +1,3 @@
-import { IRole } from "@models/Role";
 import { Schema, model,Types } from "mongoose"
 import validator from "validator";
 
