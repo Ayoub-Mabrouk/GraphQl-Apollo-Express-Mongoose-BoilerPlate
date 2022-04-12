@@ -8,7 +8,7 @@ export const context = ({ req }: { req: Request }) => {
     // try to retrieve a user with the received jwt        
     if (accessToken) {
         const user = verifyAccessToken(accessToken);
-        console.log(user);
+        // console.log(user);
         
         if (user?.tokenExpired) {
             return { user };
