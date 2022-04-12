@@ -4,5 +4,8 @@ export const permissions = shield({
     Query: {
       users: isAdmin,
       companies: or(isAdmin, isUser),
+    },
+    Mutation:{
+
     }
   });

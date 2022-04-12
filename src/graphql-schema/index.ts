@@ -11,13 +11,13 @@ const resolversPath = join(__dirname, './**/resolver.*');
 const resolversArray = loadFilesSync(resolversPath);
 const resolvers = mergeResolvers(resolversArray);
 
-
 // Load all typeDefs
 const typeDefsPath = join(__dirname, './**/schema.*');
 const typeDefsArray = loadFilesSync(typeDefsPath);
 const typeDefs = mergeTypeDefs(typeDefsArray);
 
 // Create the schema to be used by Apollo Server
+// with a middleware to check permissions
 export const schema = applyMiddleware(
     makeExecutableSchema({ typeDefs, resolvers }),
     permissions

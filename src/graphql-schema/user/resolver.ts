@@ -1,4 +1,4 @@
-import { AuthPayload, Company, ResolversTypes, SignUpInput, User } from "../../generated/graphql";
+import {  Company, SignUpInput } from "../../generated/graphql";
 import { companyModel, userModel, roleModel } from "@models/index";
 import { Types } from 'mongoose'
 import { SignInInput } from "generated/graphql";
@@ -19,16 +19,21 @@ export const resolvers = {
             return await user.save();
         },
         signIn: async (_: any, { input }: { input: SignInInput }) => {
-            const user = await userModel.findOne({ email: input.email });
+            const user = await userModel.findOne({ email: input.email }).populate("roles")
             if (!user) {
                 throw new Error("User not found");
             }
             if (user.password !== input.password) {
                 throw new Error("Password is incorrect");
             }
+            //creating a new array of roles to make payload
+            let { roles } = user as any
+            roles = Array.isArray(roles) && roles.map(role => role.role)
+            let accessTokenPayload = { userId: user?._id, roles }
+            let refreshTokenPayload = { userId: user._id, generatedID: user.generatedID }
             return {
-                accessToken: `Bearer ${generateAccessToken({ userId: user._id })}`,
-                refreshToken: `Bearer ${generateRefreshToken({ userId: user._id, generatedID: user.generatedID })}`,
+                accessToken: `Bearer ${generateAccessToken(accessTokenPayload)}`,
+                refreshToken: `Bearer ${generateRefreshToken(refreshTokenPayload)}`,
                 user
             };
         }

@@ -10,8 +10,7 @@ export const generateAccessToken = (payload: { userId: Types.ObjectId }) => sign
 export const generateRefreshToken = (payload: { userId: Types.ObjectId, generatedID: string }) => sign(payload, ENV_VARS.jwtSecret, { expiresIn: ENV_VARS.refresh_jwt_expiresIN, algorithm: ENV_VARS.refresh_jwt_algorithm } as SignOptions);
 
 //verify access token
-export const verifyAccessToken = (token: string):JwtPayload|null|void => {
-  
+export const verifyAccessToken = (token: string):JwtPayload|null|void => { 
         return verify(token, ENV_VARS.jwtSecret, { algorithms: [ENV_VARS.access_jwt_algorithm] } as VerifyOptions, (error, payload) => {
             return error ?
                 error.name == "TokenExpiredError" ?
@@ -19,7 +18,6 @@ export const verifyAccessToken = (token: string):JwtPayload|null|void => {
                 : payload
             }
         )
-
 }
 
 //verify refresh token

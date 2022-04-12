@@ -6,7 +6,7 @@
   "author": "Ayoub Mabrouk <77799760+Ayoub-Mabrouk@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "cls && ts-node-dev -r tsconfig-paths/register --respawn --transpile-only src/app.ts",
+    "dev": "ts-node-dev --cls -r tsconfig-paths/register --respawn --transpile-only src/app.ts",
     "gen": "cls && graphql-codegen --config codegen.yml"
   },
   "dependencies": {

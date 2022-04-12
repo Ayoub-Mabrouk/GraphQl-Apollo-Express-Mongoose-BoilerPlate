@@ -1,3 +1,4 @@
+import { IRole } from "@models/Role";
 import { Schema, model,Types } from "mongoose"
 import validator from "validator";
 
@@ -10,6 +11,7 @@ interface IUser {
     roles: Types.ObjectId[]
     company: Types.ObjectId
 }
+
 
 const userSchema = new Schema<IUser>(
     {
