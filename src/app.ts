@@ -32,5 +32,5 @@ app.get("/", (req: Request, res: Response): void => {
   res.send("Hello Typescript with Node.js!")
 });
 app.listen(ENV_VARS.PORT, (): void => {
-  console.log(`Server Running here 👉 http://localhost:${ENV_VARS.PORT}`);
+  console.log(`GraphQl Server Running here 👉 http://localhost:${ENV_VARS.PORT}/graphql`);
 });
