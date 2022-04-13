@@ -48,7 +48,7 @@ Generate types based on the graphQL-Schema
 
 **ODM/MongoDB Node.js Driver:** Mongoose
  
-**Server:** Node, Express,Apollo-Server-Express
+**Server:** NodeJs, Express,Apollo-Server-Express
 
 **Best Tool:** TypeScript
 
