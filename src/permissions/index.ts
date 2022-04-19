@@ -5,7 +5,6 @@ export const permissions = shield({
         // deny access to all queries that doent have a rule
       "*":deny,
       users: isAdmin,
-      companies: or(isAdmin, isUser),
     },
     Mutation:{
 

@@ -1,4 +1,4 @@
-import {  Company, SignUpInput } from "../../generated/graphql";
+import { Company, SignUpInput } from "../../generated/graphql";
 import { companyModel, userModel, roleModel } from "@models/index";
 import { Types } from 'mongoose'
 import { SignInInput } from "generated/graphql";
@@ -10,7 +10,10 @@ export const resolvers = {
         }
     },
     User: {
-        company: async ({ company }: { company: Types.ObjectId }): Promise<Company | null> => await companyModel.findById(company),
+        company: async ({ company }: { company: Types.ObjectId }, _:any,{dataLoader}): Promise<Company | null> => {
+            return await dataLoader.company.load(company)
+            // return await companyModel.findById(company)
+        },
         roles: async ({ roles }: { roles: Types.ObjectId }) => await roleModel.find({ _id: { $in: roles } })
     },
     Mutation: {
