@@ -3,6 +3,7 @@ import { companyModel, userModel, roleModel } from "@models/index";
 import { Types } from 'mongoose'
 import { SignInInput } from "generated/graphql";
 import { generateAccessToken, generateRefreshToken } from "@lib/jwt";
+import { IContext } from "@lib/context";
 export const resolvers = {
     Query: {
         users: async () => {
@@ -10,11 +11,19 @@ export const resolvers = {
         }
     },
     User: {
-        company: async ({ company }: { company: Types.ObjectId }, _:any,{dataLoader}): Promise<Company | null> => {
-            return await dataLoader.company.load(company)
+        company: async ({ company }: { company: Types.ObjectId }, _: any, { dataLoader }: IContext): Promise<Company | null> => {
+            // the dataloader - one to one
+            return await dataLoader?.company.load(company)
+            // the old way
             // return await companyModel.findById(company)
         },
-        roles: async ({ roles }: { roles: Types.ObjectId }) => await roleModel.find({ _id: { $in: roles } })
+        roles: async ({ roles }: { roles: Types.ObjectId[] }, _: any, { dataLoader }: IContext) => {
+            // the dataloader - one to many
+            return await dataLoader?.role.loadMany(roles)
+            // the old way
+            // let data= await roleModel.find({ _id: { $in: roles } })
+            // return data
+        }
     },
     Mutation: {
         signUp: async (_: any, { input }: { input: SignUpInput }) => {
