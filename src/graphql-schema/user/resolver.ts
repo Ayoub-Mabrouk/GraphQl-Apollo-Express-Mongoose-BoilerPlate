@@ -1,7 +1,7 @@
 import { Company, SignUpInput } from "../../generated/graphql";
-import { companyModel, userModel, roleModel } from "@models/index";
+import { companyModel, userModel } from "@models/index";
 import { Types } from 'mongoose'
-import { SignInInput } from "generated/graphql";
+import { SignInInput ,Resolvers} from "generated/graphql";
 import { generateAccessToken, generateRefreshToken } from "@lib/jwt";
 import { IContext } from "@lib/context";
 export const resolvers = {

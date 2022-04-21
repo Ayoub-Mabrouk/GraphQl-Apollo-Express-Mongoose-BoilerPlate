@@ -8,9 +8,14 @@ export interface IContext {
 }
 export const context = ({ req }: { req: Request }) => {
 
-    // get the user tokens from the headers
-    const accessToken = (req.headers.authorization || '').replace('Bearer ', '');
-    const refreshToken = req.headers['x-refresh-token'] || '';
+    const getTokens = () => {
+        const accessToken = (req.headers.authorization || '').replace('Bearer ', '');
+        const refreshToken = req.headers['x-refresh-token'] || '';
+        return { accessToken, refreshToken };
+    }
+
+    const {accessToken,refreshToken} =getTokens()
+   
 
     // creating a new context object so i can add properties to it later based on some conditions
     let contextData: IContext = {}
@@ -26,7 +31,6 @@ export const context = ({ req }: { req: Request }) => {
             contextData = {
                 user, dataLoader
             }
-
         }
     }
     return contextData;

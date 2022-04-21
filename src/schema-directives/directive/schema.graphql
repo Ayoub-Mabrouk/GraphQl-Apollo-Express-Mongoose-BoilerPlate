@@ -1,0 +1,2 @@
+directive @undocumented on
+  | OBJECT | FIELD_DEFINITION | ENUM

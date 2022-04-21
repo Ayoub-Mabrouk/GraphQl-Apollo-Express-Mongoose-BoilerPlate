@@ -3,7 +3,7 @@ type User {
   id: ID!
   firstName: String!
   lastName: String!
-  password: String 
+  password: String! 
   generatedID: String
   email: String!
   roles:[Role]!
