@@ -2,23 +2,14 @@ import { Request } from 'express';
 import { JwtPayload } from 'jsonwebtoken';
 import { verifyAccessToken } from './jwt';
 import dataLoader from './dataloader';
+import getTokens from 'helpers/getTokens';
 
 export interface IContext {
   user?: void | JwtPayload | null;
   dataLoader?: typeof dataLoader;
 }
 export const context = ({ req }: { req: Request }) => {
-  const getTokens = () => {
-    const accessToken = (req.headers.authorization || '').replace(
-      'Bearer ',
-      ''
-    );
-    const refreshToken = req.headers['x-refresh-token'] || '';
-    return { accessToken, refreshToken };
-  };
-
-  const { accessToken } = getTokens();
-
+  const { accessToken } = getTokens(req);
   // creating a new context object so i can add properties to it later based on some conditions
   let contextData: IContext = {};
 
