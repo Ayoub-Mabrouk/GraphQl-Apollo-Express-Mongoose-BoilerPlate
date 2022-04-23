@@ -1,15 +1,15 @@
-import { Schema, model,Types } from "mongoose"
-import validator from "validator";
+import { Schema, model } from 'mongoose';
 
 interface IRole {
-    role: string
+  role: string;
 }
 
 const roleSchema = new Schema<IRole>(
-    {
-        role: { type: String , required: true},
-    },
-    { timestamps: true }
-)
+  {
+    role: { type: String, required: true },
+  },
+  { timestamps: true }
+);
 
-export const roleModel= model<IRole>("Role", roleSchema);
+const roleModel = model<IRole>('Role', roleSchema);
+export default roleModel;

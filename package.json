@@ -7,7 +7,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --cls -r tsconfig-paths/register --respawn --transpile-only src/app.ts",
-    "gen": "cls && graphql-codegen --config codegen.yml"
+    "gen": "cls && graphql-codegen --config codegen.yml",
+    "prepare": "husky install",
+    "lint": "eslint .",
+    "cm": "cz"
   },
   "dependencies": {
     "@graphql-tools/load-files": "^6.5.3",
@@ -18,6 +21,7 @@
     "apollo-server-express": "^3.6.7",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
+    "dataloader": "^2.1.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-jwt": "^6.1.1",
@@ -42,10 +46,28 @@
     "@types/morgan": "^1.9.3",
     "@types/node": "^17.0.23",
     "@types/validator": "^13.7.2",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^12.4.0",
+    "prettier": "^2.6.2",
     "ts-node": "^10.7.0",
     "ts-node-dev": "^1.1.8",
     "tsc-alias": "^1.6.6",
     "tsconfig-paths": "^3.14.1",
     "typescript": "^4.6.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

@@ -13,7 +13,9 @@
     "paths": {
       "@models/*": ["models/*"],
       "@lib/*": ["lib/*"]
-    }
+    },
+    "forceConsistentCasingInFileNames": true,
   },
+  "exclude": ["node_modules", "dist", "coverage"],
   "include": ["src/**/*.ts"]
 }

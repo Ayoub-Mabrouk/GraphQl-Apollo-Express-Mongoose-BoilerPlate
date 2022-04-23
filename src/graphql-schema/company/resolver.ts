@@ -1,18 +1,35 @@
-import { companyModel } from "../../models";
-import { Company, CompanyInput, CompanyUpdateInput } from "../../generated/graphql";
-export const resolvers = {
-    Query: {
-        companies: async () => {
-            return await companyModel.find()
-        }
+import { companyModel } from '../../models';
+import {
+  Company,
+  CompanyInput,
+  CompanyUpdateInput,
+} from '../../generated/graphql';
+
+const resolvers = {
+  Query: {
+    companies: async () => {
+      const companies = await companyModel.find();
+      return companies;
     },
-    Mutation: {
-        createCompany: async (_: any, { input }: {input:CompanyInput}) => {              
-            const company = new companyModel(input);
-            return await company.save();
-        },
-        updateCompany: async (_: any, { input:{id,name} }: {input:CompanyUpdateInput}) :Promise<Company|null> => {
-             return await companyModel.findByIdAndUpdate(id, { name }, { new: true });
-        }
-    }
-}
+  },
+  Mutation: {
+    createCompany: async (_: any, { input }: { input: CompanyInput }) => {
+      // eslint-disable-next-line new-cap
+      const company = new companyModel(input);
+      const saveCompany = await company.save();
+      return saveCompany;
+    },
+    updateCompany: async (
+      _: any,
+      { input: { id, name } }: { input: CompanyUpdateInput }
+    ): Promise<Company | null> => {
+      const updateCompany = (await companyModel.findByIdAndUpdate(
+        id,
+        { name },
+        { new: true }
+      )) as Company | null;
+      return updateCompany;
+    },
+  },
+};
+export default resolvers;

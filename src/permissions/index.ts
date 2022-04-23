@@ -1,12 +1,18 @@
-import { shield, or, deny } from 'graphql-shield';
-import {isAdmin, isUser} from './rules';
-export const permissions = shield({
+import { shield, deny } from 'graphql-shield';
+import { isAdmin } from './rules';
+import ENV_VARS from '../env';
+
+const permissions = shield(
+  {
     Query: {
-        // deny access to all queries that doent have a rule
-      "*":deny,
+      // deny access to all queries that doent have a rule
+      '*': deny,
       users: isAdmin,
     },
-    Mutation:{
-
-    }
-  });
+    Mutation: {},
+  },
+  {
+    allowExternalErrors: ENV_VARS.isProduction,
+  }
+);
+export default permissions;
