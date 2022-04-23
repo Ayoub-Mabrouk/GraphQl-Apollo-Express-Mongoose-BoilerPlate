@@ -1,14 +1,17 @@
-import { Schema, model, Types } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import validator from 'validator';
+import { ICompany } from '@models/Company';
+import { IRole } from '@models/Role';
 
 interface IUser {
+  id: string;
   firstName: string;
   lastName: string;
-  password: string | undefined;
+  password: string;
   generatedID: string;
   email: string;
-  roles: Types.ObjectId[];
-  company: Types.ObjectId;
+  roles: IRole[];
+  company: ICompany;
 }
 
 const userSchema = new Schema<IUser>(

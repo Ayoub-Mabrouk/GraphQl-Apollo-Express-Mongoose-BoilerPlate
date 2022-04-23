@@ -1,5 +1,5 @@
 import DataLoader from 'dataloader';
-import { Model, Types } from 'mongoose';
+import { Model } from 'mongoose';
 import { companyModel, roleModel } from '@models/index';
 
 const newLoader = (model: Model<any>) => {
@@ -16,8 +16,8 @@ const newLoader = (model: Model<any>) => {
   });
   // returning the dataloader methods to be used in the resolvers
   return {
-    load: async (id: Types.ObjectId) => loader.load(id),
-    loadMany: async (ids: Types.ObjectId[]) => loader.loadMany(ids),
+    load: async (id: unknown) => loader.load(id),
+    loadMany: async (ids: ArrayLike<unknown>) => loader.loadMany(ids),
   };
 };
 

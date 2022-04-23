@@ -1,6 +1,7 @@
 import { Schema, model } from 'mongoose';
 
-interface IRole {
+export interface IRole {
+  id: string;
   role: string;
 }
 

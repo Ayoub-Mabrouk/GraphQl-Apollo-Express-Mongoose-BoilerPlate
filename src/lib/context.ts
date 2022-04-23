@@ -6,12 +6,12 @@ import getTokens from 'helpers/getTokens';
 
 export interface IContext {
   user?: void | JwtPayload | null;
-  dataLoader?: typeof dataLoader;
+  dataLoader: typeof dataLoader;
 }
 export const context = ({ req }: { req: Request }) => {
   const { accessToken } = getTokens(req);
   // creating a new context object so i can add properties to it later based on some conditions
-  let contextData: IContext = {};
+  const contextData: IContext = { dataLoader };
 
   // try to retrieve a user with the received jwt
   if (accessToken) {
@@ -21,10 +21,7 @@ export const context = ({ req }: { req: Request }) => {
     }
     // if the user is valid, add it to the context and add the dataloader
     else {
-      contextData = {
-        user,
-        dataLoader,
-      };
+      contextData.user = user;
     }
   }
   return contextData;

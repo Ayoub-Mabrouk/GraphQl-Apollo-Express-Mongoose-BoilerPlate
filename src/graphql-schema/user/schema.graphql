@@ -3,10 +3,9 @@ type User {
   id: ID!
   firstName: String!
   lastName: String!
-  password: String! 
   generatedID: String
   email: String!
-  roles:[Role]!
+  roles:[Role!]!
   company: Company!
 }
 
@@ -38,6 +37,6 @@ type Query {
   users: [User]!
 }
 type Mutation {
-  signIn(input: signInInput): AuthPayload
-  signUp(input: signUpInput):User
+  signIn(input: signInInput!): AuthPayload
+  signUp(input: signUpInput!): User
 }
