@@ -11,7 +11,8 @@ const newLoader = (model: Model<any>) => {
     // using map to avoid errors,keys length has to match returned array length
     // so each key have to return an element of the array
     // and keeping the same order
-    return keys.map((key) => data.find((item) => item.id === key));
+    // eslint-disable-next-line eqeqeq
+    return keys.map((key) => data.find((item) => item.id == key));
   });
   // returning the dataloader methods to be used in the resolvers
   return {
