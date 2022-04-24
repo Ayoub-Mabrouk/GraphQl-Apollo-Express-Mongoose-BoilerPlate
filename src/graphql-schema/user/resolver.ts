@@ -13,14 +13,14 @@ const resolvers: Resolvers<IContext> = {
   User: {
     company: async ({ company }, _, { dataLoader }) => {
       // the dataloader - one to one
-      const companies = await dataLoader?.company.load(company);
+      const companies = await dataLoader.company.load(company);
       return companies;
       // the old way
       // return await companyModel.findById(company)
     },
     roles: async ({ roles }, _, { dataLoader }) => {
       // the dataloader - one to many
-      const userRoles = await dataLoader?.role.loadMany(roles);
+      const userRoles = await dataLoader.role.loadMany(roles);
       return userRoles;
       // the old way
       // let data= await roleModel.find({ _id: { $in: roles } })
