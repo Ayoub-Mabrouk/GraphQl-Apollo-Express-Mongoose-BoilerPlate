@@ -14,7 +14,7 @@ export const isUser = rule({ cache: 'contextual' })(
     } catch (err) {
       throw err;
     }
-  }
+  },
 );
 export const isAdmin = rule({ cache: 'contextual' })(
   async (parent, args, { user }) => {
@@ -27,5 +27,5 @@ export const isAdmin = rule({ cache: 'contextual' })(
     } catch (err) {
       throw err;
     }
-  }
+  },
 );

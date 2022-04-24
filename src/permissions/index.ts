@@ -13,6 +13,6 @@ const permissions = shield(
   },
   {
     allowExternalErrors: ENV_VARS.isProduction,
-  }
+  },
 );
 export default permissions;

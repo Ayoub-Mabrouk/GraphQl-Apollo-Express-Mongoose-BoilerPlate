@@ -9,7 +9,7 @@ const companySchema = new Schema<ICompany>(
   {
     name: { type: String },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const companyModel = model<ICompany>('Company', companySchema);

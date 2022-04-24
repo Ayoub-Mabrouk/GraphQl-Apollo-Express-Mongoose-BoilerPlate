@@ -9,7 +9,7 @@ const roleSchema = new Schema<IRole>(
   {
     role: { type: String, required: true },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const roleModel = model<IRole>('Role', roleSchema);

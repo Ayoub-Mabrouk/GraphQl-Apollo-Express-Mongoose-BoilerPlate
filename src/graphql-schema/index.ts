@@ -19,6 +19,6 @@ const typeDefs = mergeTypeDefs(typeDefsArray);
 // with a middleware to check permissions
 const schema = applyMiddleware(
   makeExecutableSchema({ typeDefs, resolvers }),
-  permissions
+  permissions,
 );
 export default schema;

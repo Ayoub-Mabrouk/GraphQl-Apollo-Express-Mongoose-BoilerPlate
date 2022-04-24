@@ -21,12 +21,12 @@ const resolvers = {
     },
     updateCompany: async (
       _: any,
-      { input: { id, name } }: { input: CompanyUpdateInput }
+      { input: { id, name } }: { input: CompanyUpdateInput },
     ): Promise<Company | null> => {
       const updateCompany = (await companyModel.findByIdAndUpdate(
         id,
         { name },
-        { new: true }
+        { new: true },
       )) as Company | null;
       return updateCompany;
     },

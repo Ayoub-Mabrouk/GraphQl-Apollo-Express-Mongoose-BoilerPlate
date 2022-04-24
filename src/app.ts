@@ -3,6 +3,7 @@ import { ApolloServer } from 'apollo-server-express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express, { Request, Response, Application } from 'express';
+// import depthLimit from 'graphql-depth-limit';
 import dbConnection from './database/connection';
 import schema from './graphql-schema';
 import { context } from '@lib/context';
@@ -26,6 +27,6 @@ app.get('/', (req: Request, res: Response): void => {
 });
 app.listen(ENV_VARS.PORT, (): void => {
   console.log(
-    `GraphQl Server Running here 👉 http://localhost:${ENV_VARS.PORT}/graphql`
+    `GraphQl Server Running here 👉 http://localhost:${ENV_VARS.PORT}/graphql`,
   );
 });

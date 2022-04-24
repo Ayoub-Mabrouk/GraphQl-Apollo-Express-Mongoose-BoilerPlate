@@ -33,7 +33,7 @@ const userSchema = new Schema<IUser>(
       ref: 'Company',
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const userModel = model<IUser>('User', userSchema);
