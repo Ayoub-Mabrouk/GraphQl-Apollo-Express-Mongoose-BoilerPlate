@@ -3,7 +3,7 @@ import { ApolloServer } from 'apollo-server-express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express, { Request, Response, Application } from 'express';
-// import depthLimit from 'graphql-depth-limit';
+import depthLimit from 'graphql-depth-limit';
 import dbConnection from './database/connection';
 import schema from './graphql-schema';
 import { context } from '@lib/context';
@@ -16,6 +16,7 @@ async function startServer() {
   const apolloServer = new ApolloServer({
     schema,
     context,
+    validationRules: [depthLimit(7)],
   });
   await apolloServer.start();
   await dbConnection();
