@@ -10,6 +10,7 @@ describe('getTokens', () => {
       },
     };
     const result = getTokens(req);
+    expect(result.accessToken).not.toBeFalsy();
     expect(result).toEqual({
       accessToken: '1234567890',
       refreshToken: '0987654321',

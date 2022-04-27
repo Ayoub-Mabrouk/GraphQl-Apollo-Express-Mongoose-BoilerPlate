@@ -14,7 +14,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix --ext .js,.jsx .",
     "cm": "cz",
-    "test": "jest --watchAll",
+    "test": "jest",
     "test:unit": "jest unit",
     "test:int": "jest int",
     "test:coverage": "jest --coverage"
